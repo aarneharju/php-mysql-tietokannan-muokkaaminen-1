@@ -31,11 +31,6 @@ FOREIGN KEY (henkilo) REFERENCES henkilo(hetu)
 )";
 
 try {
-    $databaseConnection = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-
-    // set the PDO error mode to exception
-    $databaseConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     // use exec() because no results are returned
     $databaseConnection->exec($sqlCreate2);
     echo "<br>";
@@ -48,7 +43,7 @@ try {
     echo "Table sakko created successfully";
     echo "<br>";
 } catch (PDOException $e) {
-    echo $sql . "<br>" . $e->getMessage();
+    echo "<br>" . $sqlCreate2 . "<br>" . $e->getMessage();
 }
 
 $databaseConnection = null;
